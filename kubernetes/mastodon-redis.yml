@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mastodon-redis-deployment
+  labels:
+    app: mastodon-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mastodon-redis
+  template:
+    metadata:
+      labels:
+        app: mastodon-redis
+    spec:
+      securityContext:
+        runAsUser: 1055
+      volumes:
+        - name: mastodon-redis-data
+          persistentVolumeClaim:
+            claimName: mastodon-pvc
+      containers:
+        - name: mastodon-redis
+          image: redis:4.0-alpine
+          resources:
+            requests:
+              memory: 64Mi
+              cpu: 50m
+          ports:
+            - containerPort: 6379
+          volumeMounts:
+            - name: mastodon-redis-data
+              mountPath: /data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mastodon-redis-service
+spec:
+  selector:
+    app: mastodon-redis
+  ports:
+    - port: 6379
+      targetPort: 6379

@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mastodon-sidekiq-deployment
+  labels:
+    app:
+      mastodon-sidekiq
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mastodon-sidekiq
+    spec:
+      securityContext:
+        runAsUser: 1055
+      volumes:
+        - name: mastodon-sidekiq-data
+          persistentVolumeClaim:
+            claimName: mastodon-pvc
+      containers:
+        - name: sidekiq
+          image: "docker.ocf.berkeley.edu/mastodon:<%= version %>"
+          command: ["bundle", "exec", "sidekiq"]
+          envFrom:
+            - configMapRef:
+                name: mastodon-config
+            - secretRef:
+                name: mastodon-secret
+          resources:
+            requests:
+              memory: 128Mi
+              cpu: 50m
+          volumeMounts:
+            - name: mastodon-sidekiq-data
+              mountPath: /mastodon/public/system
+
+

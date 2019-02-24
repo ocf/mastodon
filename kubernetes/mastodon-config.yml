@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mastodon-config
+data:
+  REDIS_HOST: mastodon-redis-service
+  REDIS_PORT: "6379"
+  DB_HOST: postgres.ocf.berkeley.edu
+  DB_USER: ocfmastodon
+  DB_NAME: ocfmastodon
+  DB_PORT: "5432"
+  LOCAL_DOMAIN: ocf.berkeley.edu
+  WEB_DOMAIN: mastodon.ocf.berkeley.edu
+  SMTP_SERVER: smtp.ocf.berkeley.edu
+  SMTP_PORT: "25"
+  SMTP_AUTH_METHOD: none
+  SMTP_FROM_ADDRESS: ocfmastodon@ocf.berkeley.edu
+  SMTP_OPENSSL_VERIFY_MODE: none
+  EMAIL_DOMAIN_WHITELIST: ocf.berkeley.edu

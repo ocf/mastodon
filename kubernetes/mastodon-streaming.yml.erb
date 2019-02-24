@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mastodon-streaming-deployment
+  labels:
+    app: mastodon-streaming
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mastodon-streaming
+    spec:
+      securityContext:
+        runAsUser: 1055
+      containers:
+        - name: streaming
+          image: "docker.ocf.berkeley.edu/mastodon:<%= version %>"
+          command: ["yarn", "start"]
+          ports:
+            - name: streaming
+              containerPort: 4000
+          envFrom:
+            - configMapRef:
+                name: mastodon-config
+            - secretRef:
+                name: mastodon-secret
+          resources:
+            requests:
+              memory: 32Mi
+              cpu: 25m
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mastodon-streaming
+spec:
+  ports:
+    - name: streaming
+      port: 4000
+      targetPort: 4000
+  selector:
+    app: mastodon-streaming
+

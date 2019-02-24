@@ -1,0 +1,13 @@
+diff --git a/config/locales/en.yml b/config/locales/en.yml
+index 10749b21b..44bdda615 100644
+--- a/config/locales/en.yml
++++ b/config/locales/en.yml
+@@ -992,7 +992,7 @@ en:
+       title: Welcome aboard, %{name}!
+   users:
+     follow_limit_reached: You cannot follow more than %{limit} people
+-    invalid_email: The e-mail address is invalid
++    invalid_email: Invalid email, @ocf.berkeley.edu email required
+     invalid_otp_token: Invalid two-factor code
+     otp_lost_help_html: If you lost access to both, you may get in touch with %{email}
+     seamless_external_login: You are logged in via an external service, so password and e-mail settings are not available.
