@@ -9,6 +9,7 @@ data:
   DB_USER: ocfmastodon
   DB_NAME: ocfmastodon
   DB_PORT: "5432"
+  PGSSLMODE: require
   LOCAL_DOMAIN: ocf.berkeley.edu
   WEB_DOMAIN: mastodon.ocf.berkeley.edu
   SMTP_SERVER: smtp.ocf.berkeley.edu
