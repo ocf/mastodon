@@ -15,6 +15,6 @@ data:
   SMTP_SERVER: smtp.ocf.berkeley.edu
   SMTP_PORT: "25"
   SMTP_AUTH_METHOD: none
-  SMTP_FROM_ADDRESS: mastodon@ocf.berkeley.edu
+  SMTP_FROM_ADDRESS: ocfmastodon@ocf.berkeley.edu
   SMTP_OPENSSL_VERIFY_MODE: none
   EMAIL_DOMAIN_WHITELIST: ocf.berkeley.edu
