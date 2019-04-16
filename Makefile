@@ -3,7 +3,10 @@ DOCKER_TAG = docker-push.ocf.berkeley.edu/mastodon:$(DOCKER_REVISION)
 
 .PHONY: cook-image
 cook-image:
-	docker build --pull -t $(DOCKER_TAG) .
+	git clone https://github.com/tootsuite/mastodon -b v2.8.0 --depth 1 src
+	cd src; git apply ../patches/*; \
+	docker build --build-arg 'UID=1055' --build-arg 'GID=1055' --pull -t $(DOCKER_TAG) .
+	rm -rf src
 
 .PHONY: push-image
 push-image: cook-image
