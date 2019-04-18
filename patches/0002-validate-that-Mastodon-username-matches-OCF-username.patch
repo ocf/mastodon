@@ -1,0 +1,42 @@
+From 4a57be8617b3b7d6438b8ce321c8b7020959f1a0 Mon Sep 17 00:00:00 2001
+From: Christopher Cooper <cooperc@ocf.berkeley.edu>
+Date: Thu, 11 Apr 2019 23:08:09 -0700
+Subject: [PATCH 2/2] validate that Mastodon username matches OCF username
+
+---
+ app/models/account.rb                    |  1 +
+ app/validators/ocf_username_validator.rb | 10 ++++++++++
+ 2 files changed, 11 insertions(+)
+ create mode 100644 app/validators/ocf_username_validator.rb
+
+diff --git a/app/models/account.rb b/app/models/account.rb
+index 51e01246e..ca8b6ff17 100644
+--- a/app/models/account.rb
++++ b/app/models/account.rb
+@@ -77,6 +77,7 @@ class Account < ApplicationRecord
+   validates :display_name, length: { maximum: 30 }, if: -> { local? && will_save_change_to_display_name? }
+   validates :note, note_length: { maximum: 160 }, if: -> { local? && will_save_change_to_note? }
+   validates :fields, length: { maximum: 4 }, if: -> { local? && will_save_change_to_fields? }
++  validates_with OCFUsernameValidator, if: -> { local? && will_save_change_to_username? }
+ 
+   scope :remote, -> { where.not(domain: nil) }
+   scope :local, -> { where(domain: nil) }
+diff --git a/app/validators/ocf_username_validator.rb b/app/validators/ocf_username_validator.rb
+new file mode 100644
+index 000000000..f0ec89c0c
+--- /dev/null
++++ b/app/validators/ocf_username_validator.rb
+@@ -0,0 +1,10 @@
++# frozen_string_literal: true
++
++class OCFUsernameValidator < ActiveModel::Validator
++  def validate(account)
++    return if !account.local? || account.user.confirmed?
++    if account.user.email != "#{account.username}@ocf.berkeley.edu"
++      account.errors.add(:username, "Your Mastodon username should match your OCF username. If you'd like to use another username, please send a request to help@ocf.berkeley.edu.")
++    end
++  end
++end
+-- 
+2.21.0
+
