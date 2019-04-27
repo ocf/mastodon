@@ -29,8 +29,8 @@ spec:
                 name: mastodon-secret
           resources:
             requests:
-              memory: 128Mi
-              cpu: 50m
+              memory: 512Mi
+              cpu: 200m
           volumeMounts:
             - name: mastodon-sidekiq-data
               mountPath: /mastodon/public/system

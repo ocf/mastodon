@@ -29,8 +29,8 @@ spec:
                 name: mastodon-secret
           resources:
             requests:
-              memory: 32Mi
-              cpu: 25m
+              memory: 512Mi
+              cpu: 250m
           volumeMounts:
             - name: mastodon-web-data
               mountPath: /mastodon/public/system
