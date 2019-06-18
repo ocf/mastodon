@@ -18,7 +18,14 @@ spec:
       containers:
         - name: web
           image: "docker.ocf.berkeley.edu/mastodon:<%= version %>"
-          command: ["sh", "-c", "RAILS_ENV=production bundle exec rails db:migrate; bundle exec rails s -p 3000 -b 0.0.0.0"]
+          command:
+            - sh
+            - -c
+            - >-
+              RAILS_ENV=production
+              bundle exec rails db:migrate;
+              bin/tootctl cache clear;
+              bundle exec rails s -p 3000 -b 0.0.0.0
           ports:
             - name: web
               containerPort: 3000
