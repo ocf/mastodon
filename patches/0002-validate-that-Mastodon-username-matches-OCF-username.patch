@@ -1,7 +1,7 @@
 From 87e93d0a68c1c746b983cddeec49313f70636b68 Mon Sep 17 00:00:00 2001
 From: Christopher Cooper <cooperc@ocf.berkeley.edu>
 Date: Thu, 11 Apr 2019 23:08:09 -0700
-Subject: [PATCH 2/2] validate that Mastodon username matches OCF username
+Subject: [PATCH 2/3] validate that Mastodon username matches OCF username
 
 ---
  app/models/account.rb                    |  1 +
