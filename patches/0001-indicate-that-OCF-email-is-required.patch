@@ -1,4 +1,4 @@
-From ff7048cee3afe0f79448f0c959baa1b12c0665cc Mon Sep 17 00:00:00 2001
+From e316a68f78837bcf8c4a64180aa481f1f34d9203 Mon Sep 17 00:00:00 2001
 From: Christopher Cooper <cooperc@ocf.berkeley.edu>
 Date: Thu, 11 Apr 2019 23:07:48 -0700
 Subject: [PATCH 1/2] indicate that OCF email is required
@@ -8,10 +8,10 @@ Subject: [PATCH 1/2] indicate that OCF email is required
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/config/locales/en.yml b/config/locales/en.yml
-index 405b0eda5..f7f60bbf7 100644
+index 1d25801..74273b1 100644
 --- a/config/locales/en.yml
 +++ b/config/locales/en.yml
-@@ -1067,7 +1067,7 @@ en:
+@@ -1254,7 +1254,7 @@ en:
        title: Welcome aboard, %{name}!
    users:
      follow_limit_reached: You cannot follow more than %{limit} people
@@ -21,5 +21,5 @@ index 405b0eda5..f7f60bbf7 100644
      otp_lost_help_html: If you lost access to both, you may get in touch with %{email}
      seamless_external_login: You are logged in via an external service, so password and e-mail settings are not available.
 -- 
-2.21.0
+2.11.0
 
