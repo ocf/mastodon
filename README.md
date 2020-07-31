@@ -1,6 +1,6 @@
 # Mastodon @ OCF
 
-[![Build Status](https://jenkins.ocf.berkeley.edu/buildStatus/icon?job=ocf/mastodon/master)](https://jenkins.ocf.berkeley.edu/job/ocf/job/mastodonjob/master/)
+[![Build Status](https://jenkins.ocf.berkeley.edu/buildStatus/icon?job=ocf/mastodon/master)](https://jenkins.ocf.berkeley.edu/job/ocf/job/mastodon/job/master)
 
 Avaliable at <https://mastodon.ocf.berkeley.edu>.
 
