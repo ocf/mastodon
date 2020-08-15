@@ -20,7 +20,7 @@ spec:
             claimName: mastodon-pvc
       containers:
         - name: sidekiq
-          image: "docker.ocf.berkeley.edu/mastodon:<%= version %>"
+          image: "tootsuite/mastodon:<%= version %>"
           command: ["bundle", "exec", "sidekiq"]
           envFrom:
             - configMapRef:

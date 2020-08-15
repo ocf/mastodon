@@ -17,7 +17,7 @@ spec:
             claimName: mastodon-pvc
       containers:
         - name: web
-          image: "docker.ocf.berkeley.edu/mastodon:<%= version %>"
+          image: "tootsuite/mastodon:<%= version %>"
           command: ["sh", "-c", "RAILS_ENV=production bundle exec rails db:migrate; bundle exec rails s -p 3000 -b 0.0.0.0"]
           ports:
             - name: web
