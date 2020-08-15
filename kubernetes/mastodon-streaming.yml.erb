@@ -15,7 +15,7 @@ spec:
         runAsUser: 1055
       containers:
         - name: streaming
-          image: "docker.ocf.berkeley.edu/mastodon:<%= version %>"
+          image: "tootsuite/mastodon:<%= version %>"
           command: ["yarn", "start"]
           ports:
             - name: streaming
