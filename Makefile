@@ -1,11 +1,13 @@
 DOCKER_REVISION ?= testing-$(USER)
 DOCKER_TAG = docker-push.ocf.berkeley.edu/mastodon:$(DOCKER_REVISION)
 
+MASTODON_VERSION := 3.2.0
+
 .PHONY: cook-image
 cook-image:
 	rm -rf src
-	git clone https://github.com/tootsuite/mastodon -b v3.1.2 --depth 1 src
-	cd src && git apply ../patches/* && \
+	git clone https://github.com/tootsuite/mastodon -b v$(MASTODON_VERSION) --depth 1 src
+	cd src && \
 	docker build --build-arg 'UID=1055' --build-arg 'GID=1055' --pull -t $(DOCKER_TAG) .
 	rm -rf src
 
